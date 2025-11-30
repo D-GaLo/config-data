@@ -6,7 +6,7 @@ system:
 
 spring:
   application:
-    name: servicio-autenticacion
+    name: auth-service
   datasource:
     url: jdbc:mysql://localhost:3306/dwb?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
     password: YoEr@Un#PaPuRR#yT0doG09aYsVEhs#
