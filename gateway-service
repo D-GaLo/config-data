@@ -1,0 +1,51 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway-service  
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true 
+      routes:
+        - id: product-service
+          uri: lb://product-service
+          predicates:
+            - Path=/product/** 
+          filters:
+            - StripPrefix=0 
+
+        - id: invoice-service
+          uri: lb://invoice-service
+          predicates:
+            - Path=/invoice/**
+          filters:
+            - StripPrefix=0
+
+        - id: auth-service
+          uri: lb://auth-service
+          predicates:
+            - Path=/auth/**
+          filters:
+            - StripPrefix=0
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    hostname: localhost
+    prefer-ip-address: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,loggers,threaddump,heapdump
+  endpoint:
+    health:
+      show-details: always
