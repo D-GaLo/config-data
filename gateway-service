@@ -11,21 +11,21 @@ spring:
           enabled: true 
       routes:
         - id: product-service
-          uri: lb://PRODUCT-SERVICE
+          uri: lb://product-service
           predicates:
-            - Path=/product/**
+            - Path=/product-service/**
           filters:
             - StripPrefix=1
 
         - id: invoice-service
-          uri: lb://INVOICE-SERVICE
+          uri: lb://invoice-service
           predicates:
-            - Path=/invoice/**
+            - Path=/invoice-service/**
           filters:
             - StripPrefix=1
 
         - id: auth-service
-          uri: lb://AUTH-SERVICE
+          uri: lb://auth-service
           predicates:
             - Path=/auth/**
           filters:
