@@ -13,21 +13,21 @@ spring:
         - id: product-service
           uri: lb://product-service
           predicates:
-            - Path=/product/** 
+            - Path=/** 
           filters:
             - StripPrefix=0 
 
         - id: invoice-service
           uri: lb://invoice-service
           predicates:
-            - Path=/invoice/**
+            - Path=/**
           filters:
             - StripPrefix=0
 
         - id: auth-service
           uri: lb://auth-service
           predicates:
-            - Path=/auth/**
+            - Path=/**
           filters:
             - StripPrefix=0
 
