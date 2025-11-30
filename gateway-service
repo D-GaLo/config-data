@@ -13,23 +13,23 @@ spring:
         - id: product-service
           uri: lb://product-service
           predicates:
-            - Path=/** 
+            - Path=/product/**
           filters:
-            - StripPrefix=0 
+            - StripPrefix=1
 
         - id: invoice-service
           uri: lb://invoice-service
           predicates:
-            - Path=/**
+            - Path=/invoice/**
           filters:
-            - StripPrefix=0
+            - StripPrefix=1
 
         - id: auth-service
           uri: lb://auth-service
           predicates:
-            - Path=/**
+            - Path=/auth/**
           filters:
-            - StripPrefix=0
+            - StripPrefix=1
 
 eureka:
   client:
